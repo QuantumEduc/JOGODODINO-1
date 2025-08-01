@@ -12,17 +12,23 @@ const gameAreawidth = document.getElementById("gamearea").offsetWidth;
     dino.style.animation = "none";
     dino.offsetHeight; // força reflow
     dino.style.animation = "jump 0.5s ease-out";
+
+    setTimeout(() => {
+        dino.style.animation = "";
+        isjumping = false;
+    }, 500);
+}
     document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
         jump();
     }
-});}
+});
     function moveObstaculo() {
     let obstaculoPos = obstaculo.offsetLeft;
     obstaculo.style.left = obstaculoPos - speed + "px";
 
     if (obstaculoPos <= -50) {
-        obstaculo.style.left = gameAreaWidth + "px";
+        obstaculo.style.left = gameAreawidth + "px";
     }
       checkCollision();
 }
